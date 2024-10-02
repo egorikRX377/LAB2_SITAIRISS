@@ -1,5 +1,8 @@
 package Systems.InterfacesRealisations;
 
+import Pojo.Doctor;
+import Systems.Interfaces.CheckSystem;
+import Systems.Interfaces.PrintSystem;
 import Systems.Interfaces.RegSystem;
 import Systems.Interfaces.LogSystem;
 
@@ -8,7 +11,7 @@ import java.util.Scanner;
 import Pojo.Account;
 import Database.Database;
 
-public class HospitalSystem implements RegSystem, LogSystem
+public class HospitalSystem implements RegSystem, LogSystem, CheckSystem<Doctor>
 {
     private Database<Account> database;
 
@@ -70,5 +73,12 @@ public class HospitalSystem implements RegSystem, LogSystem
 
             System.out.println("Неверный логин или пароль! Попробуйте ещё раз!");
         }
+    }
+
+    @Override
+    public void check(Database<Doctor> database)
+    {
+        PrintSystem<Doctor> printMechanism = new PrintMechanism<>();
+        printMechanism.printInfo(database.getData());
     }
 }
