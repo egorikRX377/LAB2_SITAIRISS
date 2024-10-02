@@ -1,10 +1,10 @@
 package Systems.InterfacesRealisations;
 
-import Systems.Interfaces.IPrintable;
+import Systems.Interfaces.PrintSystem;
 
 import java.util.ArrayList;
 
-public class PrintMechanism<T> implements IPrintable<T>
+public class PrintMechanism<T> implements PrintSystem<T>
 {
     @Override
     public void printInfo(ArrayList<T> data)

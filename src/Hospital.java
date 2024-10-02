@@ -33,10 +33,10 @@ public class Hospital
 
         patientDatabase.getData().getFirst().signIn(system);
 
-        patientDatabase.getData().getFirst().checkAllDoctors(doctorDatabase.getData());
+        patientDatabase.getData().getFirst().checkAllDoctors(system, doctorDatabase);
 
         patientDatabase.getData().getFirst().logOut();
 
-        patientDatabase.getData().getFirst().checkAllDoctors(doctorDatabase.getData());
+        patientDatabase.getData().getFirst().checkAllDoctors(system, doctorDatabase);
     }
 }

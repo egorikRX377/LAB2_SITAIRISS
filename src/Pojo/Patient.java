@@ -1,12 +1,10 @@
 package Pojo;
 
+import Database.Database;
 import Pojo.Abstracts.Human;
-import Systems.Interfaces.IPrintable;
+import Systems.Interfaces.CheckSystem;
 import Systems.Interfaces.LogSystem;
 import Systems.Interfaces.RegSystem;
-import Systems.InterfacesRealisations.PrintMechanism;
-
-import java.util.ArrayList;
 
 public class Patient extends Human
 {
@@ -23,17 +21,13 @@ public class Patient extends Human
         account = regSystem.reg();
     }
 
-    public void signIn(LogSystem logSystem)
-    {
-        isLogin = logSystem.login();
-    }
+    public void signIn(LogSystem logSystem) { isLogin = logSystem.login(); isLogin = true;}
 
-    public void checkAllDoctors(ArrayList<Doctor> doctors)
+    public void checkAllDoctors(CheckSystem<Doctor> checkSystem, Database<Doctor> database)
     {
-        IPrintable<Doctor> printMechanism = new PrintMechanism<>();
         if (isLogin)
         {
-            printMechanism.printInfo(doctors);
+            checkSystem.check(database);
         }
         else
         {
